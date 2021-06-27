@@ -1,27 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef long long int ll;
-typedef unsigned long long int ull;
-#define IOS ios_base::sync_with_stdio(0);  cin.tie(0); cout.tie(0);
-
-typedef pair<int,int>pr;
-#define mp   make_pair
-#define all(i)     i.begin() , i.end()
-#define ft     first
-#define sn     second
-#define pb push_back
-#define eps 1e-9
-#define SP cout<<fixed<<setprecision(10);
-
         /// BISMILLHIR RAHMANIR RAHIM
 ///------------------------------------------------------------
-
-#define inf 100000
-#define MAXN 20010
-int cnt [ MAXN+1];
-const int mod = 1e9+7;
-const int INF = 0x3f3f3f3f;
 
 char a[25][25];
 int vis[25][25];
@@ -30,8 +11,6 @@ int n,m;
 int ans;
 
 int step[4][2]={1,0,-1,0,0,1,0,-1};
-
-
 
 bool isvalid(int x,int y)
 {
@@ -104,7 +83,6 @@ void solve()
     }
    }
 
-   //printf("%d %d\n",p,q);
    bfs(p,q);
 
    printf("%d\n",ans);
