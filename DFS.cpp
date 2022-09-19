@@ -1,45 +1,36 @@
 #include<bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
-#define pb push_back
-#define MAXN 100000
 
-vector <bool>vis; // visited array
-vector<int> grp[MAXN];
+#define MAXN 100
+vector<int>g[MAXN];
+int vis[MAXN];
+vector<int>v;
 
-void DFS(int node)
+void dfs(int nd)
 {
-    vis[node] = 1;
-    cout<<"curr node -> "<< node<<endl;
-for(auto i:grp[node]) // visit this node's array
+    vis[nd] = 1;
+    v.push_back(nd);
+
+    for(auto i:g[nd])
     {
-      if(vis[i] == 0) DFS(i);
+        if(vis[i] == 1) continue;
+        dfs(i);
     }
-}
-void solve()
-{
-   int n,m,root;
-   cin >> n >> m >> root;
- 
-   vis.resize(n+1,0);
-for (int i = 0 ; i < m ; i++)
-    { 
-        int u,v;
-        cin >> u >> v; 
-        grp[u].pb(v);
-        grp[v].pb(u); 
-}
-    DFS(root);
 }
 int main()
 {
-   
-    int t;
-    t = 1;
-    // cin >> t;
-    while ( t-- )
-        solve();
-    return 0;
+   int n,m;
+   cin >> n >> m;
+   for(int i = 1;i <= m;i++)
+   {
+     int x,y;
+     cin >> x >> y;
+     g[x].push_back(y);
+     g[y].push_back(x);
+   }
+
+   dfs(1);
+   // travase order
+   for(auto i:v) cout<<i<<" ";cout<<endl;
+
 }
-
-
