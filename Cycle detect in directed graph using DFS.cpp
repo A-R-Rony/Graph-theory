@@ -9,19 +9,18 @@ using namespace std;
 
 vector<int>g[MAXN];
 int vis[MAXN];
-int dfsvis[MAXN];
 
 bool dfs(int nd)
 {
     bool ok = false;
-    vis[nd] = dfsvis[nd] = 1;
+    vis[nd] = 1;
     for(auto i:g[nd]){
-        if(vis[i] == 1 && dfsvis[i] == 1) return true;
-        if(vis[i] == 1) continue;
-        ok |= dfs(i);
+        if(vis[i] == 0) {
+            ok |= dfs(i);
+        }
+        else if(vis[i] == 1) return true;
     }
-
-    dfsvis[nd] = 0;
+    vis[nd] = 2;
     return ok;
 }
 void solve()
